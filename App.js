@@ -1,27 +1,34 @@
-import React from "react";
+mport React from "react";
+
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {NavigationContainer} from "@react-navigation/native";
-import OnboardingScreen from "./src/Screens/Onboarding Screen/Onboarding.screen";
+import OnBoarding from "./src/Screens/OnBoardingScreen/OnBoarding";
+//import Login from "./src/Screens/LoginScreen/Login";
+
+const Stack=createNativeStackNavigator ()
+
+const MainNavigator= () => {
+  return (
+   <Stack.Navigator screenOptions={{headerShown:false}}>
+       <Stack.Screen
+         name= "Onboarding"
+         component={OnBoarding}
+        />
+      <Stack.Screen
+          name = {"Login"}
+          component={Login}
+      />
+   </Stack.Navigator>
+  )
 
 
+}
 function App() {
-    const Stack=createNativeStackNavigator ()
 
-    const MainNavigator= () => {
-       return (
-        <Stack.Navigator screenOptions={{headerShown:false}}>
-            <Stack.Screen
-              name= "Onboarding"
-              component={OnboardingScreen}
-             />
-        </Stack.Navigator>
-       )
     
-
-    }
     return (
         <NavigationContainer>
-            <OnboardingScreen/>
+           <MainNavigator/>
         </NavigationContainer>
     )
 }
